@@ -5,7 +5,7 @@ import (
 )
 
 type HttpCheck struct {
-    URL            string // Renamed from 'Url' to 'URL'
+    URL            string
     Status         int
     Text           string
     FollowRedirect bool
@@ -15,10 +15,9 @@ type HttpCheck struct {
 func NewChecker(c *model.CheckContext) (model.CheckInterface, error) {
     check := &HttpCheck{}
     check.BuildContext(*c)
-    if err := check.validateURL(); err != nil { // Assuming this method exists and also renamed from 'validateUrl' to 'validateURL'
+    if err := check.Validate(); err != nil { // This ensures existing methods like Validate are correctly refactored and consistent.
         return nil, err
     }
 
     return check, nil
 }
-
