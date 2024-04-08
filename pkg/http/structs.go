@@ -21,3 +21,4 @@ func NewChecker(c *model.CheckContext) (model.CheckInterface, error) {
 
     return check, nil
 }
+
