@@ -10,7 +10,7 @@ import (
 )
 
 func (h *HttpCheck) BuildContext(cx model.CheckContext) {
-	h.Url = cx.Host
+	h.URL = cx.Host
 	h.Status = cx.HttpConf.StatusCode
 	if len(cx.HttpConf.Text) > 0 {
 		h.Text = cx.HttpConf.Text
@@ -19,7 +19,7 @@ func (h *HttpCheck) BuildContext(cx model.CheckContext) {
 }
 
 func (h *HttpCheck) Validate() error {
-	if !h.validateUrl() {
+	if !h.validateURL() {
 		return errors.New("invalid URL provided")
 	}
 
@@ -31,7 +31,7 @@ func (h *HttpCheck) Validate() error {
 }
 
 func (h *HttpCheck) Check(ctx context.Context) (bool, bool, error) {
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, h.Url, nil)
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, h.URL, nil)
 	if err != nil {
 		return false, false, err
 	}

@@ -2,13 +2,13 @@ package http
 
 import "net/url"
 
-func (h *HttpCheck) validateUrl() bool {
-	_, err := url.ParseRequestURI(h.Url)
+func (h *HttpCheck) validateURL() bool {
+	_, err := url.ParseRequestURI(h.URL)
 	if err != nil {
 		return false
 	}
 
-	u, err := url.Parse(h.Url)
+	u, err := url.Parse(h.URL)
 	if err != nil || u.Scheme == "" || u.Host == "" {
 		return false
 	}
