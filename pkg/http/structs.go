@@ -5,7 +5,7 @@ import (
 )
 
 type HttpCheck struct {
-	Url            string
+	URL            string
 	Status         int
 	Text           string
 	FollowRedirect bool
