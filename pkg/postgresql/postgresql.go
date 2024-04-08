@@ -5,9 +5,12 @@ import (
 	"database/sql"
 	"errors"
 	"wait4it/pkg/model"
-
-	_ "github.com/lib/pq"
 )
+
+// Initialize pq driver
+func init() {
+	_ = sql.Register("postgres", &PostgresDriver{})
+}
 
 func (pq *PostgresSQLConnection) BuildContext(cx model.CheckContext) {
 	pq.Port = cx.Port
